@@ -10,9 +10,12 @@ import TextField from "@mui/material/TextField"
 import { Button } from "@mui/material"
 import { Formik, Form } from "formik"
 import { object, string } from "yup"
-import { login } from "../services/apiRequest"
+// import { login } from "../services/useApiRequest"
+import useApiRequest from "../services/useApiRequest"
 
 const Login = () => {
+  const { login } = useApiRequest()
+
   const loginSchema = object({
     email: string()
       .email("Geçerli bir email giriniz")
@@ -73,13 +76,13 @@ const Login = () => {
             onSubmit={(values, actions) => {
               //TODO
               //? POST (Login)
-              login(values)
               //? Toastify
               //? Global state güncellenmesi
               //? form resetleme
+              //? navigate
+              login(values)
               actions.resetForm()
               actions.setSubmitting(false) //? isSubmitting
-              //? navigate
             }}
           >
             {({
