@@ -9,9 +9,16 @@ import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
 import { Button } from "@mui/material"
 import { Formik, Form } from "formik"
+import { object, string, number, date, InferType } from "yup"
 
 const Login = () => {
-  const loginSchema = {}
+  const loginSchema = object({
+    name: string().required(),
+    age: number().required().positive().integer(),
+    email: string().email(),
+    website: string().url().nullable(),
+    createdOn: date().default(() => new Date()),
+  })
 
   return (
     <Container maxWidth="lg">
@@ -62,7 +69,7 @@ const Login = () => {
               //? navigate
             }}
           >
-            {() => (
+            {({ values, handleChange, handleBlur }) => (
               <Form>
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <TextField
@@ -71,6 +78,11 @@ const Login = () => {
                     id="email"
                     type="email"
                     variant="outlined"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={true}
+                    helperText={"Deneme"}
                   />
                   <TextField
                     label="password"
@@ -78,6 +90,9 @@ const Login = () => {
                     id="password"
                     type="password"
                     variant="outlined"
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
                   <Button variant="contained" type="submit">
                     Submit
