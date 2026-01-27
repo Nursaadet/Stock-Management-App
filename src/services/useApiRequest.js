@@ -7,7 +7,7 @@ import {
   registerSuccess,
   logoutSuccess,
 } from "../features/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 //?Custom hook
@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 const useApiRequest = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { token } = useSelector((state) => state.auth);
   const login = async (userData) => {
     //   const BASE_URL = "https://stockapi-mce8.onrender.com"
 
@@ -52,7 +52,9 @@ const useApiRequest = () => {
   const logout = async () => {
     dispatch(fetchStart());
     try {
-      await axios(`${process.env.REACT_APP_BASE_URL}/auth/logout`);
+      await axios(`${process.env.REACT_APP_BASE_URL}/auth/logout`, {
+        headers: { Authorization: `Token ${token}` },
+      });
       dispatch(logoutSuccess());
     } catch (error) {
       dispatch(fetchFail());
