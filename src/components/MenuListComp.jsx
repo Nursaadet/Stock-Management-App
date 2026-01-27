@@ -9,8 +9,11 @@ import InventoryIcon from "@mui/icons-material/Inventory"
 import StoreIcon from "@mui/icons-material/Store"
 import StarsIcon from "@mui/icons-material/Stars"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
+import { useNavigate } from "react-router-dom"
 
 const MenuListComp = () => {
+  const navigate = useNavigate()
+
   const icons = [
     {
       title: "Dashboard",
@@ -48,7 +51,11 @@ const MenuListComp = () => {
     <div>
       <List>
         {icons.map((item, index) => (
-          <ListItem key={item.title} disablePadding>
+          <ListItem
+            key={item.title}
+            disablePadding
+            onClick={() => navigate(item.path)}
+          >
             <ListItemButton>
               <ListItemIcon>{item.iconName}</ListItemIcon>
               <ListItemText primary={item.title} />
