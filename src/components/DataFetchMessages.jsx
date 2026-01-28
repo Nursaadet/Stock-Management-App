@@ -6,6 +6,10 @@ export const ErrorMessage = () => {
   return <Alert severity="error">Veriler çekilemedi</Alert>
 }
 
+export const NoDataMessage = () => {
+  return <Alert severity="warning">Gösterilecek veri bulunamadı</Alert>
+}
+
 const TableSkeleton = () => {
   return (
     <div>
