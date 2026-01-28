@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
 import Modal from "@mui/material/Modal"
+import useStockRequest from "../services/useStockRequest"
 
 const style = {
   position: "absolute",
@@ -25,8 +26,22 @@ export default function FirmModal({ handleClose, open }) {
     address: "",
   })
 
+  const { postStock } = useStockRequest()
+
   const handleChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    postStock("firms", info)
+    setInfo({
+      name: "",
+      phone: "",
+      image: "",
+      address: "",
+    })
+    handleClose()
   }
 
   console.log(info)
@@ -42,6 +57,7 @@ export default function FirmModal({ handleClose, open }) {
           <Box
             sx={{ display: "flex", flexDirection: "column", gap: 2 }}
             component={"form"}
+            onSubmit={handleSubmit}
           >
             <TextField
               label="Firm Name"
