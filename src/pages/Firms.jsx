@@ -14,11 +14,12 @@ import { useSelector } from "react-redux"
 
 const Firms = () => {
   // const { axiosToken } = useAxios()
-  const { getFirms } = useStockRequest()
+  const { getFirms, getSales } = useStockRequest()
   const { firms } = useSelector((state) => state.stock)
 
   useEffect(() => {
     getFirms()
+    getSales()
   }, [])
 
   console.log(firms)
