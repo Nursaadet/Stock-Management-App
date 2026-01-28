@@ -12,7 +12,7 @@ import { useSelector } from "react-redux"
 
 export default function ProductModal({ handleClose, open, info, setInfo }) {
   const { postStock } = useStockRequest()
-  const { categories } = useSelector((state) => state.stock)
+  const { categories, brands } = useSelector((state) => state.stock)
 
   const handleChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value })
@@ -25,7 +25,6 @@ export default function ProductModal({ handleClose, open, info, setInfo }) {
     handleClose()
   }
 
-  console.log(categories)
   return (
     <div>
       <Modal
@@ -49,6 +48,7 @@ export default function ProductModal({ handleClose, open, info, setInfo }) {
                 label="Categories"
                 value={info.categoryId}
                 onChange={handleChange}
+                required
               >
                 {categories.map((item) => (
                   <MenuItem key={item._id} value={item._id}>
@@ -58,13 +58,32 @@ export default function ProductModal({ handleClose, open, info, setInfo }) {
               </Select>
             </FormControl>
 
+            <FormControl fullWidth>
+              <InputLabel id="brandId">Brands</InputLabel>
+              <Select
+                labelId="brandId"
+                id="brandId"
+                name="brandId"
+                label="Brands"
+                value={info.brandId}
+                onChange={handleChange}
+                required
+              >
+                {brands.map((item) => (
+                  <MenuItem key={item._id} value={item._id}>
+                    {item.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
             <TextField
-              label="address"
-              name="address"
-              id="address"
+              label="name"
+              name="name"
+              id="name"
               type="text"
               variant="outlined"
-              value={info.address}
+              value={info.name}
               onChange={handleChange}
               required
             />
