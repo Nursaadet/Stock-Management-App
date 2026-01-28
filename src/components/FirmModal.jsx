@@ -26,7 +26,7 @@ export default function FirmModal({ handleClose, open, info, setInfo }) {
   //     address: "",
   //   })
 
-  const { postStock } = useStockRequest()
+  const { postStock, putStock } = useStockRequest()
 
   const handleChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value })
@@ -34,8 +34,14 @@ export default function FirmModal({ handleClose, open, info, setInfo }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    //? post firma işlemi
-    postStock("firms", info)
+
+    if (info._id) {
+      //? put isteginin
+      putStock("firms", info)
+    } else {
+      //? post firma işlemi
+      postStock("firms", info)
+    }
 
     //? modal ı kapıtıyoruz
     handleClose()
