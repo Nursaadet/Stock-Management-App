@@ -106,7 +106,7 @@ export default function FirmModal({ handleClose, open, info, setInfo }) {
               required
             />
             <Button variant="contained" type="submit">
-              ADD FIRM
+              {info._id ? "UPDATE FIRM" : "ADD FIRM"}
             </Button>
           </Box>
         </Box>
