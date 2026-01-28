@@ -5,6 +5,7 @@ import { useSelector } from "react-redux"
 import Typography from "@mui/material/Typography"
 import Button from "@mui/material/Button"
 import Grid from "@mui/material/Grid"
+import FirmCard from "../components/FirmCard"
 
 // export const getFirms = async () => {
 //   try {
@@ -36,9 +37,11 @@ const Firms = () => {
 
       <Button variant="contained">New Firm</Button>
 
-      <Grid container>
+      <Grid container gap={2} mt={3} justifyContent={"center"}>
         {firms.map((firm) => (
-          <Grid item></Grid>
+          <Grid item>
+            <FirmCard firm={firm} />
+          </Grid>
         ))}
       </Grid>
     </div>
