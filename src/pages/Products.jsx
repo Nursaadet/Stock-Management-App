@@ -26,7 +26,7 @@ const Products = () => {
     setInfo(initialState)
   }
   useEffect(() => {
-    getStock("products")
+    getStock("product")
     getStock("categories")
     getStock("brands")
   }, [])
@@ -49,7 +49,7 @@ const Products = () => {
       {loading && <TableSkeleton />}
       {error && <ErrorMessage />}
       {!error && !loading && products.length > 0 && <ProductTable />}
-      {!products.length && <NoDataMessage />}
+      {!error && !products.length && <NoDataMessage />}
       <ProductModal
         handleClose={handleClose}
         open={open}
