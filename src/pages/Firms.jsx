@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 // import useAxios from "../services/useAxios"
 import useStockRequest from "../services/useStockRequest"
+import { useSelector } from "react-redux"
 
 // export const getFirms = async () => {
 //   try {
@@ -12,13 +13,15 @@ import useStockRequest from "../services/useStockRequest"
 // }
 
 const Firms = () => {
-  const { getFirms } = useStockRequest()
   // const { axiosToken } = useAxios()
+  const { getFirms } = useStockRequest()
+  const { firms } = useSelector((state) => state.stock)
 
   useEffect(() => {
     getFirms()
   }, [])
 
+  console.log(firms)
   return <div>Firms</div>
 }
 
