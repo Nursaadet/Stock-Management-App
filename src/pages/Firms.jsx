@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography"
 import Button from "@mui/material/Button"
 import Grid from "@mui/material/Grid"
 import FirmCard from "../components/FirmCard"
+import FirmModal from "../components/FirmModal"
 
 // export const getFirms = async () => {
 //   try {
@@ -36,6 +37,8 @@ const Firms = () => {
       </Typography>
 
       <Button variant="contained">New Firm</Button>
+
+      <FirmModal />
 
       <Grid container gap={2} mt={3} justifyContent={"center"}>
         {firms.map((firm) => (
