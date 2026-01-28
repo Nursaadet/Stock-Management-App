@@ -4,8 +4,7 @@ import { useSelector } from "react-redux"
 import Typography from "@mui/material/Typography"
 import Button from "@mui/material/Button"
 import Grid from "@mui/material/Grid"
-import FirmCard from "../components/FirmCard"
-import FirmModal from "../components/FirmModal"
+import ProductModal from "../components/ProductModal"
 import ProductTable from "../components/ProductTable"
 
 const Firms = () => {
@@ -32,7 +31,7 @@ const Firms = () => {
   }
 
   useEffect(() => {
-    getStock("firms")
+    getStock("products")
   }, [])
 
   return (
@@ -45,7 +44,7 @@ const Firms = () => {
         New Product
       </Button>
 
-      <FirmModal
+      <ProductModal
         handleClose={handleClose}
         open={open}
         info={info}

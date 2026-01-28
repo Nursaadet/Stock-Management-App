@@ -1,37 +1,8 @@
 import * as React from "react"
 import Box from "@mui/material/Box"
-import { DataGrid } from "@mui/x-data-grid"
-
-const columns = [
-  { field: "id", headerName: "ID", width: 90 },
-  {
-    field: "firstName",
-    headerName: "First name",
-    width: 150,
-    editable: true,
-  },
-  {
-    field: "lastName",
-    headerName: "Last name",
-    width: 150,
-    editable: true,
-  },
-  {
-    field: "age",
-    headerName: "Age",
-    type: "number",
-    width: 110,
-    editable: true,
-  },
-  {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    width: 160,
-    valueGetter: (value, row) => `${row.firstName || ""} ${row.lastName || ""}`,
-  },
-]
+import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid"
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever"
+import useStockRequest from "../services/useStockRequest"
 
 const rows = [
   { id: 1, lastName: "Snow", firstName: "Jon", age: 14 },
@@ -46,6 +17,53 @@ const rows = [
 ]
 
 export default function ProductTable() {
+  const { deleteStock } = useStockRequest()
+
+  const columns = [
+    { field: "_id", headerName: "#", minWidth: 100, flex: 1.2 },
+    {
+      field: "categories",
+      headerName: "Categories",
+      width: 150,
+      editable: true,
+    },
+    {
+      field: "brand",
+      headerName: "Brands",
+      width: 150,
+      editable: true,
+    },
+    {
+      field: "name",
+      headerName: "Name",
+      type: "number",
+      width: 110,
+      editable: true,
+    },
+    {
+      field: "stock",
+      headerName: "Stock",
+      description: "This column has a value getter and is not sortable.",
+      sortable: false,
+      width: 160,
+    },
+    {
+      field: "actions",
+      type: "actions",
+      headerName: "Operations",
+      getActions: (props) => {
+        console.log(props)
+        return [
+          <GridActionsCellItem
+            icon={<DeleteForeverIcon />}
+            onClick={() => deleteStock("products", "id")}
+            label="Delete"
+          />,
+        ]
+      },
+    },
+  ]
+
   return (
     <Box sx={{ height: 400, width: "100%" }}>
       <DataGrid
