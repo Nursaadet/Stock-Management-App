@@ -18,23 +18,13 @@ const style = {
   p: 4,
 }
 
-export default function FirmModal({ handleClose, open }) {
-  const [info, setInfo] = useState({
-    name: "",
-    phone: "",
-    image: "",
-    address: "",
-  })
-
-  //? open state'i değişince lokal stateleri sifirla
-  useEffect(() => {
-    setInfo({
-      name: "",
-      phone: "",
-      image: "",
-      address: "",
-    })
-  }, [open])
+export default function FirmModal({ handleClose, open, info, setInfo }) {
+  //   const [info, setInfo] = useState({
+  //     name: "",
+  //     phone: "",
+  //     image: "",
+  //     address: "",
+  //   })
 
   const { postStock } = useStockRequest()
 
