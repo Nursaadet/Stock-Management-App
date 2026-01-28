@@ -24,6 +24,12 @@ export default function FirmModal({ handleClose, open }) {
     image: "",
     address: "",
   })
+
+  const handleChange = (e) => {
+    setInfo({ ...info, [e.target.name]: e.target.value })
+  }
+
+  console.log(info)
   return (
     <div>
       <Modal
@@ -44,6 +50,7 @@ export default function FirmModal({ handleClose, open }) {
               type="text"
               variant="outlined"
               value={info.name}
+              onChange={handleChange}
             />
 
             <TextField
@@ -53,6 +60,7 @@ export default function FirmModal({ handleClose, open }) {
               type="tel"
               variant="outlined"
               value={info.phone}
+              onChange={handleChange}
             />
 
             <TextField
@@ -62,6 +70,7 @@ export default function FirmModal({ handleClose, open }) {
               type="text"
               variant="outlined"
               value={info.address}
+              onChange={handleChange}
             />
 
             <TextField
@@ -71,6 +80,7 @@ export default function FirmModal({ handleClose, open }) {
               type="url"
               variant="outlined"
               value={info.image}
+              onChange={handleChange}
             />
             <Button variant="contained" type="submit">
               ADD FIRM
