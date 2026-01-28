@@ -32,6 +32,8 @@ const Firms = () => {
 
   useEffect(() => {
     getStock("products")
+    getStock("categories")
+    getStock("brands")
   }, [])
 
   return (
