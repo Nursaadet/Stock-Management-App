@@ -51,7 +51,7 @@ const Firms = () => {
     // getFirms()
     // getSales()
     // getStock("sales")
-    getStock("firm")
+    getStock("firms")
   }, [])
 
   return (
@@ -70,9 +70,8 @@ const Firms = () => {
         </CardSkeleton>
       )}
 
-      {error && <ErrorMessage />}
-      {!error && !loading && !firms.length && <NoDataMessage />}
-      {!error && !loading && firms.length > 0 && (
+      {!loading && !firms.length && <NoDataMessage />}
+      {!loading && firms.length > 0 && (
         <Grid container gap={2} mt={3} justifyContent={"center"}>
           {firms.map((firm) => (
             <Grid item key={firm._id}>

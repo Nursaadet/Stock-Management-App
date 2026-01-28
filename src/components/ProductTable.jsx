@@ -1,4 +1,3 @@
-import * as React from "react"
 import Box from "@mui/material/Box"
 import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid"
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever"
@@ -67,9 +66,8 @@ export default function ProductTable() {
     },
   ]
 
-  console.log(products)
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", mt: 3 }}>
       <DataGrid
         autoHeight
         rows={products}

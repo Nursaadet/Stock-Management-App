@@ -4,7 +4,11 @@ import { useSelector } from "react-redux"
 import BrandCard from "../components/BrandCard"
 import BrandModal from "../components/BrandModal"
 import useStockRequest from "../services/useStockRequest"
-import { CardSkeleton, ErrorMessage, NoDataMessage } from "../components/DataFetchMessages"
+import {
+  CardSkeleton,
+  ErrorMessage,
+  NoDataMessage,
+} from "../components/DataFetchMessages"
 
 const Brands = () => {
   const { getStock } = useStockRequest()
@@ -20,7 +24,7 @@ const Brands = () => {
   }
 
   useEffect(() => {
-    getStock("brands")
+    getStock("brand")
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
@@ -39,9 +43,8 @@ const Brands = () => {
         </CardSkeleton>
       )}
 
-      {error && <ErrorMessage />}
-      {!error && !loading && !brands.length && <NoDataMessage />}
-      {!error && !loading && brands.length > 0 && (
+      {!loading && !brands.length && <NoDataMessage />}
+      {!loading && brands.length > 0 && (
         <Grid container gap={2} mt={3} justifyContent={"center"}>
           {brands?.map((brand) => (
             <Grid item key={brand._id}>
