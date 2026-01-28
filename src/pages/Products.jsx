@@ -6,28 +6,18 @@ import Button from "@mui/material/Button"
 import ProductModal from "../components/ProductModal"
 import ProductTable from "../components/ProductTable"
 
-const Firms = () => {
+const Products = () => {
   const { getStock } = useStockRequest()
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
 
-  const [info, setInfo] = useState({
-    name: "",
-    phone: "",
-    image: "",
-    address: "",
-  })
+  const initialState = { categoryId: "", brandId: "", name: "" }
+  const [info, setInfo] = useState(initialState)
 
   const handleClose = () => {
     setOpen(false)
-    setInfo({
-      name: "",
-      phone: "",
-      image: "",
-      address: "",
-    })
+    setInfo(initialState)
   }
-
   useEffect(() => {
     getStock("products")
     getStock("categories")
@@ -56,4 +46,4 @@ const Firms = () => {
   )
 }
 
-export default Firms
+export default Products
