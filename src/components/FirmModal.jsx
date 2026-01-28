@@ -1,4 +1,4 @@
-import * as React from "react"
+import { useEffect, useState } from "react"
 import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
@@ -19,12 +19,22 @@ const style = {
 }
 
 export default function FirmModal({ handleClose, open }) {
-  const [info, setInfo] = React.useState({
+  const [info, setInfo] = useState({
     name: "",
     phone: "",
     image: "",
     address: "",
   })
+
+  //? open state'i değişince lokal stateleri sifirla
+  useEffect(() => {
+    setInfo({
+      name: "",
+      phone: "",
+      image: "",
+      address: "",
+    })
+  }, [open])
 
   const { postStock } = useStockRequest()
 
@@ -34,13 +44,10 @@ export default function FirmModal({ handleClose, open }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    //? post firma işlemi
     postStock("firms", info)
-    setInfo({
-      name: "",
-      phone: "",
-      image: "",
-      address: "",
-    })
+
+    //? modal ı kapıtıyoruz
     handleClose()
   }
 
@@ -67,6 +74,7 @@ export default function FirmModal({ handleClose, open }) {
               variant="outlined"
               value={info.name}
               onChange={handleChange}
+              required
             />
 
             <TextField
@@ -77,6 +85,7 @@ export default function FirmModal({ handleClose, open }) {
               variant="outlined"
               value={info.phone}
               onChange={handleChange}
+              required
             />
 
             <TextField
@@ -87,6 +96,7 @@ export default function FirmModal({ handleClose, open }) {
               variant="outlined"
               value={info.address}
               onChange={handleChange}
+              required
             />
 
             <TextField
@@ -97,6 +107,7 @@ export default function FirmModal({ handleClose, open }) {
               variant="outlined"
               value={info.image}
               onChange={handleChange}
+              required
             />
             <Button variant="contained" type="submit">
               ADD FIRM
