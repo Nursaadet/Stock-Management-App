@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 // import useAxios from "../services/useAxios"
 import useStockRequest from "../services/useStockRequest"
 import { useSelector } from "react-redux"
@@ -22,6 +22,9 @@ const Firms = () => {
   // const { getFirms, getSales } = useStockRequest()
   const { getStock } = useStockRequest()
   const { firms } = useSelector((state) => state.stock)
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   useEffect(() => {
     // getFirms()
@@ -36,9 +39,11 @@ const Firms = () => {
         Firms
       </Typography>
 
-      <Button variant="contained">New Firm</Button>
+      <Button variant="contained" onClick={handleOpen}>
+        New Firm
+      </Button>
 
-      <FirmModal />
+      <FirmModal handleClose={handleClose} open={open} />
 
       <Grid container gap={2} mt={3} justifyContent={"center"}>
         {firms.map((firm) => (
