@@ -3,13 +3,11 @@ import useStockRequest from "../services/useStockRequest"
 import { useSelector } from "react-redux"
 import Typography from "@mui/material/Typography"
 import Button from "@mui/material/Button"
-import Grid from "@mui/material/Grid"
 import ProductModal from "../components/ProductModal"
 import ProductTable from "../components/ProductTable"
 
 const Firms = () => {
   const { getStock } = useStockRequest()
-  const { firms } = useSelector((state) => state.stock)
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
 

@@ -18,7 +18,11 @@ export default function ProductTable() {
       headerName: "Categories",
       flex: 1,
       minWidth: 100,
-      valueGetter: (value, row) => row.categoryId?.name,
+      // valueGetter: (value, row) => {
+      //   console.log("ROW:", row, "VALUE:", value)
+      //   return value?.name
+      // },
+      valueGetter: (value) => value?.name,
     },
     {
       field: "brandId",
@@ -27,8 +31,8 @@ export default function ProductTable() {
       align: "center",
       width: 150,
       flex: 1.2,
-      editable: true,
-      valueGetter: (value, row) => row.brandId?.name,
+      // editable: true,
+      valueGetter: (value) => value?.name,
     },
     {
       field: "name",
@@ -37,7 +41,7 @@ export default function ProductTable() {
       align: "center",
       flex: 1.1,
       miWidth: 110,
-      editable: true,
+      // editable: true,
     },
     {
       field: "quantity",
@@ -63,20 +67,14 @@ export default function ProductTable() {
     },
   ]
 
+  console.log(products)
   return (
     <Box sx={{ width: "100%" }}>
       <DataGrid
         autoHeight
         rows={products}
         columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 5,
-            },
-          },
-        }}
-        pageSizeOptions={[5]}
+        pageSizeOptions={[5, 10, 25, 50, 100]}
         checkboxSelection
         disableRowSelectionOnClick
         getRowId={getRowId}
