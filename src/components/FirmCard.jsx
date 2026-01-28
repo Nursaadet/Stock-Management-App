@@ -6,8 +6,12 @@ import CardMedia from "@mui/material/CardMedia"
 import Typography from "@mui/material/Typography"
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline"
 import EditIcon from "@mui/icons-material/Edit"
+import { btnStyle } from "../styles/globalStyles"
 
 export default function FirmCard({ firm }) {
+  //   const btnStyle = {
+  //     "&:hover": { color: "red", cursor: "pointer" },
+  //   }
   const { address, _id, name, phone, image } = firm
   return (
     <Card
@@ -30,13 +34,13 @@ export default function FirmCard({ firm }) {
         <Typography variant="body2" color="text.secondary">
           {address}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" mt={2}>
           {phone}
         </Typography>
       </CardContent>
       <CardActions>
-        <DeleteOutlineIcon />
-        <EditIcon />
+        <DeleteOutlineIcon sx={btnStyle} />
+        <EditIcon sx={btnStyle} />
       </CardActions>
     </Card>
   )
