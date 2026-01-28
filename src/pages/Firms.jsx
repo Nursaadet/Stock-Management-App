@@ -51,7 +51,7 @@ const Firms = () => {
     // getFirms()
     // getSales()
     // getStock("sales")
-    getStock("firms")
+    getStock("firm")
   }, [])
 
   return (
@@ -60,7 +60,7 @@ const Firms = () => {
         Firms
       </Typography>
 
-      <Button variant="contained" onClick={handleOpen}>
+      <Button variant="contained" onClick={handleOpen} disabled={error}>
         New Firm
       </Button>
 
@@ -71,7 +71,7 @@ const Firms = () => {
       )}
 
       {error && <ErrorMessage />}
-      {!error && !firms.length && <NoDataMessage />}
+      {!error && !loading && !firms.length && <NoDataMessage />}
       {!error && !loading && firms.length > 0 && (
         <Grid container gap={2} mt={3} justifyContent={"center"}>
           {firms.map((firm) => (

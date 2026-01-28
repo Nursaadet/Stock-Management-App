@@ -37,19 +37,15 @@ const Products = () => {
         Products
       </Typography>
 
-      <Button
-        variant="contained"
-        onClick={handleOpen}
-        sx={{ mb: 3 }}
-        disabled={error}
-      >
+      <Button variant="contained" onClick={handleOpen} disabled={error}>
         New Product
       </Button>
 
       {loading && <TableSkeleton />}
       {error && <ErrorMessage />}
-      {!error && !loading && products.length > 0 && <ProductTable />}
-      {!error && !products.length && <NoDataMessage />}
+      {!loading && !error && products.length > 0 && <ProductTable />}
+      {!loading && !error && !products.length && <NoDataMessage />}
+
       <ProductModal
         handleClose={handleClose}
         open={open}

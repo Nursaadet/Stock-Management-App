@@ -20,7 +20,7 @@ export const NoDataMessage = () => {
 
 export const CardSkeleton = ({ children }) => {
   return (
-    <Stack spacing={1} sx={{ mt: 3 }}>
+    <Stack spacing={1} sx={{ mt: 3 }} alignItems={"center"}>
       <Skeleton variant="rectangular">{children}</Skeleton>
     </Stack>
   )
