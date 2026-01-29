@@ -6,6 +6,7 @@ import {
   getFirmsSuccess,
   getSalesSuccess,
   getStockSuccess,
+  getProPurBraFirmSuccess,
 } from "../features/stockSlice"
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify"
 
@@ -96,7 +97,8 @@ const useStockRequest = () => {
         await axiosToken("/brands"),
         await axiosToken("/firms"),
       ])
-      console.log(products, firms)
+      console.log(products.data.data, firms.data.data)
+      dispatch(getProPurBraFirmSuccess)
     } catch (error) {
       console.log(error)
     }
