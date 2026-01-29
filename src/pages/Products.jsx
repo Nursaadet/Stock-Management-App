@@ -26,7 +26,7 @@ const Products = () => {
     setInfo(initialState)
   }
   useEffect(() => {
-    getStock("product")
+    getStock("products")
     getStock("categories")
     getStock("brands")
   }, [])
