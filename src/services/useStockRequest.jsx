@@ -86,9 +86,25 @@ const useStockRequest = () => {
       console.log(error)
     }
   }
+
+  const getProPurBraFirmStock = async () => {
+    dispatch(fetchStart())
+    try {
+      const [products, purchases, brands, firms] = await Promise.all([
+        await axiosToken("/products"),
+        await axiosToken("/purchases"),
+        await axiosToken("/brands"),
+        await axiosToken("/firms"),
+      ])
+      console.log(products, firms)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   // return { getFirms, getSales }
 
-  return { getStock, deleteStock, postStock, putStock }
+  return { getStock, deleteStock, postStock, putStock, getProPurBraFirmStock }
 }
 
 export default useStockRequest
