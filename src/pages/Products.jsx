@@ -26,7 +26,7 @@ const Products = () => {
     setInfo(initialState)
   }
   useEffect(() => {
-    getStock("products")
+    getStock("product")
     getStock("categories")
     getStock("brands")
   }, [])
@@ -42,7 +42,6 @@ const Products = () => {
       </Button>
 
       {loading && <TableSkeleton />}
-      {error && <ErrorMessage />}
       {!loading && products.length > 0 && <ProductTable />}
       {!loading && !products.length && <NoDataMessage />}
 
