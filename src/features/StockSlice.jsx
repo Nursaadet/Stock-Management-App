@@ -40,12 +40,15 @@ const stockSlice = createSlice({
       // state.error = false
     },
 
-    getProPurBraFirmSuccess: (state, { payload }) => {
+    getProPurBraFirmSuccess: (
+      state,
+      { payload: { products, purchases, firms, brands } }
+    ) => {
       state.loading = false
-      state.products = x
-      state.purchases = x
-      state.brands = x
-      state.firms = x
+      state.products = products
+      state.purchases = purchases
+      state.brands = brands
+      state.firms = firms
     },
     fetchFail: (state) => {
       state.loading = false

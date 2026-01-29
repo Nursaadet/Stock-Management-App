@@ -91,14 +91,18 @@ const useStockRequest = () => {
   const getProPurBraFirmStock = async () => {
     dispatch(fetchStart())
     try {
-      const [products, purchases, brands, firms] = await Promise.all([
-        await axiosToken("/products"),
-        await axiosToken("/purchases"),
-        await axiosToken("/brands"),
-        await axiosToken("/firms"),
+      const [pro, pur, bra, fir] = await Promise.all([
+        axiosToken("/products"),
+        axiosToken("/purchases"),
+        axiosToken("/brands"),
+        axiosToken("/firms"),
       ])
-      console.log(products.data.data, firms.data.data)
-      dispatch(getProPurBraFirmSuccess)
+      const products = pro?.data?.data
+      const purchases = pur?.data?.data
+      const brands = bra?.data?.data
+      const firms = fir?.data?.data
+
+      dispatch(getProPurBraFirmSuccess({ products, purchases, brands, firms }))
     } catch (error) {
       console.log(error)
     }
