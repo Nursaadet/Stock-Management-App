@@ -2,16 +2,18 @@ import Paper from "@mui/material/Paper"
 import Avatar from "@mui/material/Avatar"
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
-import { deepOrange, deepPurple } from "@mui/material/colors"
-import EuroIcon from "@mui/icons-material/Euro"
+import { pink, deepPurple, amber } from "@mui/material/colors"
+import PaidIcon from "@mui/icons-material/Paid"
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket"
+import LocalMallIcon from "@mui/icons-material/LocalMall"
+import CreditCardIcon from "@mui/icons-material/CreditCard"
 import { Typography } from "@mui/material"
 const KPICards = () => {
   const kpiData = [
     {
       id: 1,
       title: "Sales",
-      icon: <EuroIcon />,
+      icon: <PaidIcon />,
       amount: "€12000",
       color: deepPurple[700],
       bgColor: deepPurple[100],
@@ -21,8 +23,16 @@ const KPICards = () => {
       title: "Profit",
       icon: <ShoppingBasketIcon />,
       amount: "€35000",
-      color: "purple",
-      bgColor: "hotpink",
+      color: pink[700],
+      bgColor: pink[100],
+    },
+    {
+      id: 3,
+      title: "purchases",
+      amount: "€40000",
+      icon: <LocalMallIcon />,
+      color: amber[700],
+      bgColor: amber[100],
     },
   ]
   return (
