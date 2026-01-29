@@ -7,14 +7,24 @@ import PaidIcon from "@mui/icons-material/Paid"
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket"
 import LocalMallIcon from "@mui/icons-material/LocalMall"
 import { Typography } from "@mui/material"
+import { useSelector } from "react-redux"
 
 const KPICards = () => {
+  const { sales, purchases } = useSelector((state) => state.stock)
+
+  const totalSales = sales?.reduce((acc, sale) => acc + sale.amount, 0)
+
+  const totalPurchases = purchases?.reduce(
+    (acc, purchase) => acc + purchase.amount,
+    0
+  )
+
   const kpiData = [
     {
       id: 1,
       title: "Sales",
       icon: <PaidIcon sx={{ fontSize: "1.8rem" }} />,
-      amount: "€12000000",
+      amount: "₺" + totalSales.toLocaleString("tr-TR"),
       color: deepPurple[700],
       bgColor: deepPurple[100],
     },
@@ -22,14 +32,14 @@ const KPICards = () => {
       id: 2,
       title: "Profit",
       icon: <ShoppingBasketIcon sx={{ fontSize: "1.7rem" }} />,
-      amount: "€350000000",
+      amount: "₺" + (totalSales - totalPurchases).toLocaleString("tr-TR"),
       color: pink[700],
       bgColor: pink[100],
     },
     {
       id: 3,
       title: "purchases",
-      amount: "€4000000",
+      amount: "₺" + totalPurchases.toLocaleString("tr-TR"),
       icon: <LocalMallIcon sx={{ fontSize: "1.7rem" }} />,
       color: amber[700],
       bgColor: amber[100],
