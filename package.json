@@ -5,10 +5,10 @@
   "description": "Stock Management System",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "node swaggerAutogen && node index.js",
     "debug": "DEBUG=express nodemon",
     "server": "nodemon server",
-    "setup-production": "npm i && cd client && npm i && npm run build && npm run rename1 && npm run swagger",
+    "setup-production": "npm i && cd client && npm i && npm run build && npm run rename1",
     "dev": "node swaggerAutogen && nodemon index.js",
     "swagger": "node swaggerAutogen"
     
