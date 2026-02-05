@@ -27,7 +27,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "rename": "mv build ../public",
-    "rename1": "mkdir -p ../public && mv build/* ../public"
+    "rename1": "rm -rf ../public && mkdir ../public && mv build/* ../public"
+
   },
   "eslintConfig": {
     "extends": [
