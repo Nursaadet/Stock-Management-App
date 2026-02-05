@@ -3,8 +3,8 @@
 	EXPRESS - Personnel API
 ------------------------------------------------------- */
 require('dotenv').config()
-const HOST = process.env?.HOST || '127.0.0.1'
-const PORT = process.env?.PORT || 8000
+// const HOST = process.env?.HOST || '127.0.0.1'
+// const PORT = process.env?.PORT || 8000
 /* ------------------------------------------------------- */
 const swaggerAutogen = require('swagger-autogen')()
 const packageJson = require('./package.json')
@@ -15,10 +15,10 @@ const document = {
 		title: packageJson.title,
 		description: packageJson.description,
 		termsOfService: "http://www.CourseName.com/#",
-		contact: { name: packageJson.author, email: "developer@CourseName.com" },
+		contact: { name: packageJson.author, email: "nursaadetozdemir@gmail.com" },
 		license: { name: packageJson.license, },
 	},
-	host: `${HOST}:${PORT}`,
+	host: "stock-management-app-nlx4.onrender.com",
 	basePath: '/',
 	schemes: ['http', 'https'],
 	consumes: ["application/json"],
